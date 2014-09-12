@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="/pgq/" target="_blank">
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="angular.min.js"></script>
+	<script src="questionController.js"></script>
+	<style>
+
+		body {
+			background-color: black;
+			padding: 0; 
+			margin: 0;
+		}
+
+		li {
+			list-style: inside;
+			font-size: 18px;
+			list-style: none;
+			margin-left: -40px;
+			cursor: pointer;
+		}
+
+		p {
+			font-size: 22px;
+		}
+
+		.container {
+			background-color: white;
+			min-height: 600px;
+		}
+
+	</style>
+</head>
+<body>
+
+<div ng-app="" ng-controller="questionController" class="container">
+ 	
+ 	<div class="row">
+ 		<div class="col-xs-1 col-sm-3 col-md-3"></div>
+	 	<div class="col-xs-10 col-sm-6 col-md-6" ng-show="indexPage" style="text-align:center">
+	 		<p>
+	 			2014年热点大盘点
+	 		</p>
+	 		<div>
+	 			<button ng-click='startQuestion()' class="btn btn-primary">开始</button>
+	 		</div>
+	 	</div>
+	 	<div class="col-xs-1 col-sm-3 col-md-3"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-1 col-sm-2"></div>
+		<div class="col-xs-10 col-sm-8" ng-show="questionPage" style="text-align:center">
+		 	<p style="text-align:left">{{showQuestion['question']}}</p>
+		 	<ul style="text-align:left" ng-repeat="(key, value) in showQuestion['point']">
+		 		<li  ng-mouseover="effect()" ng-mouseout="reverseEffect()" ng-click="page(key)"> <input type="radio" name="optionsRadios">  {{value}}</li>
+		 	</ul>
+		 	<div style="text-align:left;color:red;">你目前答对了: {{totalScore}}</div>
+		 	<div style="text-align:left;color:Red">倒计时: {{countDown}}</div>
+	 	</div>
+	 	<div class="col-xs-1 col-sm-2"></div>
+	 </div>
+
+	<div class="row">
+		<div class="col-xs-1 col-sm-4"></div>
+	 	<div class="col-xs-10 col-sm-4" ng-show="questionResult" style="text-align:center">
+	 		<p>{{ResultText}}</p>
+	 		<div>
+	 			<button ng-click='restart()' class="btn btn-primary">重新开始</button>
+	 			<button ng-click='follow()' class="btn btn-danger">关注我们</button>
+	 		</div>
+	 	</div>
+	 	
+	 	<div class="col-xs-1 col-sm-4"></div>
+	</div>
+ 	
+</div>
+
+
+</body>
+</html>
