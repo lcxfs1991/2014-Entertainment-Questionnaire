@@ -81,7 +81,7 @@ function questionController($scope, $http, $interval){
 			li.style.backgroundColor = "white";
 			li.style.opacity = 1;
 			var radio = li.children[0];
-			radio.setAttribute('checked', 'false');
+			radio.removeAttribute('checked');
 		}
 
 		//reusage part of score button and go back button
